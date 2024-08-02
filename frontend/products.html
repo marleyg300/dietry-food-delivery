@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Manage Products</title>
+</head>
+<body>
+    <h1>Manage Products</h1>
+    <form id="product-form" method="POST" action="products.php" enctype="multipart/form-data">
+        <div class="input-field">
+            <input type="text" name="name" placeholder="Product Name" required>
+        </div>
+        <div class="input-field">
+            <input type="file" name="image" accept="image/*" required>
+        </div>
+        <div class="input-field">
+            <textarea name="description" placeholder="Product Description" required></textarea>
+        </div>
+        <div class="input-field">
+            <input type="number" name="price" placeholder="Product Price" step="0.01" required>
+        </div>
+        <button type="submit" name="action" value="add">Add Product</button>
+    </form>
+
+    <h2>Existing Products</h2>
+    <div class="products-list">
+        <?php
+        $conn = new mysqli('localhost', 'root', '', 'food_delivery');
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+
+        $sql = "SELECT * FROM menu_items";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                echo "<div class='product-item'>";
+                echo "<h3>" . htmlspecialchars($row['name']) . "</h3>";
+                if (!empty($row['image_url'])) {
+                    echo "<img src='" . htmlspecialchars($row['image_url']) . "' alt='" . htmlspecialchars($row['name']) . "' style='width:100px;height:auto;'>";
+                }
+                echo "<p>" . htmlspecialchars($row['description']) . "</p>";
+                echo "<p>Price: $" . htmlspecialchars($row['price']) . "</p>";
+                echo "<form method='POST' action='products.php'>";
+                echo "<input type='hidden' name='id' value='" . htmlspecialchars($row['id']) . "'>";
+                echo "<button type='submit' name='action' value='delete'>Delete</button>";
+                echo "</form>";
+                echo "</div>";
+            }
+        } else {
+            echo "No products available.";
+        }
+
+        $conn->close();
+        ?>
+    </div>
+</body>
+</html>

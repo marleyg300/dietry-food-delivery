@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Food Delivery System</title>
+</head>
+<body>
+    <!--Navbar-->
+    <div class="container">
+        <h1>Food Life</h1>
+        <div class="navbar">
+            <ul>
+                <li><a href="home.html">HOME</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+                <li><a href="menu.html">MENU</a></li>
+                <li><a href="contactus.html">CONTACT US</a></li>
+            </ul>
+        </div> 
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+        <h3>Welcome to Food LIFE</h3>
+        <h1>Healthy and Rich Food</h1>
+        <p>Food Life is a Food order and Delivery Website that meets all your dietary needs and restrictions.</p>
+        <button class="login-btn">LOG IN</button>
+    </div>
+    <!--Login Popup Form-->
+    <div class="form-popup login-popup">
+        <label for="" class="close-btn fas fa-times"></label>
+        <div class="form-box">
+            <div class="form-content">
+                <h2>LOGIN</h2>
+                <?php if (isset($_GET['error']) && $_GET['error'] == '1'): ?>
+                    <div class="error-message">Wrong credentials. Please try again.</div>
+                <?php endif; ?>
+                <form action="login.php" method="POST">
+                    <div class="input-field">
+                        <input type="text" name="email" placeholder="Email" required>
+                    </div>
+                    <div class="input-field">
+                        <input type="password" name="password" placeholder="Password" required>
+                    </div>
+                    <button type="submit">LOGIN</button>
+                </form>
+                <div class="bottom-link">
+                    Don't have an account?
+                    <a href="#" class="show-signup">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Sign-Up Popup Form-->
+    <div class="form-popup signup-popup">
+        <label for="" class="close-btn fas fa-times"></label>
+        <div class="form-box">
+            <div class="form-content">
+                <h2>SIGN UP</h2>
+                <form id="signup-form" method="POST" action="signup.php">
+                    <!-- Step 1: User Information -->
+                    <div class="form-step" id="step1">
+                        <div class="input-field">
+                            <input type="text" name="email" placeholder="Email" required>
+                        </div>
+                        <div class="input-field">
+                            <input type="text" name="phone" placeholder="Phone Number" required>
+                        </div>
+                        <div class="input-field">
+                            <input type="text" name="username" placeholder="Username" required>
+                        </div>
+                        <div class="input-field">
+                            <input type="password" name="password" placeholder="Password" required>
+                        </div>
+                        <select name="role" class="input-field" required>
+                            <option value="user">User</option>
+                            <option value="admin">Admin</option>
+                        </select>
+                        <button type="button" onclick="showStep(2)">Next</button>
+                    </div>
+                    <!-- Step 2: Dietary Restrictions -->
+                    <div class="form-step" id="step2" style="display: none;">
+                        <h3>Select Dietary Restrictions:</h3>
+                        <div class="card-container">
+                            <!-- Cards for dietary restrictions -->
+                            <label class="card">
+                                <input type="checkbox" name="dietary_restrictions[]" value="Hypertension">
+                                <div class="card-content">
+                                    <div class="card-top">
+                                        <img src="images/hypertension.jpg">
+                                    </div>
+                                    <div class="card-bottom">
+                                        <p>Hypertension</p>
+                                    </div>
+                                </div>
+                            </label>
+                            <label class="card">
+                                <input type="checkbox" name="dietary_restrictions[]" value="Diabetes">
+                                <div class="card-content">
+                                    <div class="card-top">
+                                        <img src="images/diabetes.jpg">
+                                    </div>
+                                    <div class="card-bottom">
+                                        <p>Diabetes</p>
+                                    </div>
+                                </div>
+                            </label>
+                            <label class="card">
+                                <input type="checkbox" name="dietary_restrictions[]" value="Lactose Intolerance">
+                                <div class="card-content">
+                                    <div class="card-top">
+                                        <img src="images/lactose intolerance.jpg">
+                                    </div>
+                                    <div class="card-bottom">
+                                        <p>Lactose Intolerance</p>
+                                    </div>
+                                </div>
+                            </label>
+                            <label class="card">
+                                <input type="checkbox" name="dietary_restrictions[]" value="Vegan">
+                                <div class="card-content">
+                                    <div class="card-top">
+                                        <img src="images/vegan.jpg">
+                                    </div>
+                                    <div class="card-bottom">
+                                        <p>Vegan</p>
+                                    </div>
+                                </div>
+                            </label>
+                            <label class="card">
+                                <input type="checkbox" name="dietary_restrictions[]" value="High Protein Diet">
+                                <div class="card-content">
+                                    <div class="card-top">
+                                        <img src="images/foodlife.jpg">
+                                    </div>
+                                    <div class="card-bottom">
+                                        <p>High Protein Diet</p>
+                                    </div>
+                                </div>
+                            </label>
+                            <label class="card">
+                                <input type="checkbox" name="dietary_restrictions[]" value="Anti Inflammatory Diet">
+                                <div class="card-content">
+                                    <div class="card-top">
+                                        <img src="images/anti inflammatory.jpg">
+                                    </div>
+                                    <div class="card-bottom">
+                                        <p>Anti Inflammatory Diet</p>
+                                    </div>
+                                </div>
+                            </label>
+                            <label class="card">
+                                <input type="checkbox" name="dietary_restrictions[]" value="Celiac Disease">
+                                <div class="card-content">
+                                    <div class="card-top">
+                                        <img src="images/celiac.jpg">
+                                    </div>
+                                    <div class="card-bottom">
+                                        <p>Celiac Disease</p>
+                                    </div>
+                                </div>
+                            </label>
+                            <label class="card">
+                                <input type="checkbox" name="dietary_restrictions[]" value="Renal Diet">
+                                <div class="card-content">
+                                    <div class="card-top">
+                                        <img src="images/foodlife.jpg">
+                                    </div>
+                                    <div class="card-bottom">
+                                        <p>Renal Diet</p>
+                                    </div>
+                                </div>
+                            </label>
+                            <label class="card">
+                                <input type="checkbox" name="dietary_restrictions[]" value="Ulcers Diet">
+                                <div class="card-content">
+                                    <div class="card-top">
+                                        <img src="images/ulcers.jpg">
+                                    </div>
+                                    <div class="card-bottom">
+                                        <p>Ulcers Diet</p>
+                                    </div>
+                                </div>
+                            </label>
+                            <!-- Add more dietary restrictions as needed -->
+                        </div>
+                        <button type="button" onclick="showStep(1)">Back</button>
+                        <button type="submit" class="signup-submit">Sign Up</button>
+                    </div>
+                </form>
+                <div class="bottom-link">
+                    Already have an account?
+                    <a href="#" class="show-login">Log In</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function showStep(step) {
+            document.querySelectorAll('.form-step').forEach(function(stepElement) {
+                stepElement.style.display = 'none';
+            });
+            document.getElementById('step' + step).style.display = 'block';
+        }
+    </script>
+</body>
+</html>

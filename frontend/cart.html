@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <nav>
+        <!-- Same navbar structure as home.html -->
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="cart.html">Cart</a></li>
+            <li><a href="#" class="login-btn">Login</a></li>
+        </ul>
+    </nav>
+
+    <h1>Shopping Cart</h1>
+    <div id="cart-items"></div>
+    <p id="total-price">Total: $0</p>
+    <button class="menu_btn" id="checkout-btn">Checkout</button>
+
+    <!-- Checkout Popup -->
+    <div id="checkout-popup" class="popup">
+        <div class="popup-content">
+            <span class="close-popup">&times;</span>
+            <h2>Order Details</h2>
+            <p id="order-id">Order ID: </p>
+            <p id="client-name">Name: </p>
+            <p id="client-phone">Phone: </p>
+            <div id="order-items"></div>
+            <p id="total-amount">Total Amount: $0</p>
+            <label for="payment-method">Payment Method:</label>
+            <select id="payment-method">
+                <option value="cash">Cash</option>
+                <option value="mpesa">Mpesa</option>
+                <option value="bank">Bank</option>
+            </select>
+        </div>
+    </div>
+</body>
+</html>
