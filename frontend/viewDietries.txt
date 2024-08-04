@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="menu.js" defer></script>
-    <link rel="stylesheet" href="style.css">
+    <script src="js/viewDietries.js" defer></script>
+    <link rel="stylesheet" href="css/style.css">
     <title>Dietary Menus</title>
 </head>
 <body>
@@ -17,6 +17,7 @@
                 <a href="#" class="cart-btn">
                 <i class="fa-solid fa-cart-shopping"></i></a>
             </ul>
+            
         </div> 
     </div>
     <div class="menu" id="Menu">
@@ -733,6 +734,69 @@
         </div>
      </div>
     </div>
+    <div class="sidecart">
+        <div id="cart_content">
+            <div class="cart_header">
+                <img src="images/cart.svg" alt="" style="width: 30px;">
+                <div class="header_title ">
+                    <p>My Cart</p>
+                    <span id="items_num">4</span>
+                </div>
+                <span id="close_btn" class="close_btn">&times;</span>
+            </div>
+            <div class="cart_items">
+                <div class="cart_item">
+                    <div class="remove_item">
+                        <span>&times</span>
+                    </div>
+                    <div class="item_img">
+                        <img src="" alt="">
+                    </div>
+                    <div class="item_details">
+                        <p></p>
+                        <strong></strong>
+                        <div class="qty">
+                            <span>-</span>
+                            <strong>1</strong>
+                            <span>+</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <div class="cart_actions">
+                <div class="subtotal">
+                    <p>Subtotal</p>
+                    <p><span id="subtotal_price">1000.00</span></p></div>
+                    <div class="service_fee">
+                        <p>Service Fee</p>
+                        <p><span id="service_price">100.00</span></p>
+                    </div>  
+                    <div class="total">
+                    <p>Total</p>
+                    <p><span id="total_price">1000.00</span></p>
+                </div>
+                <button id="checkout-button">checkout</button>
+            </div>
+        </div> 
+    </div>
+    <!-- Details Popup -->
+<div class="details-popup" id="details-popup">
+    <div class="popup-content">
+        <div class="header_title">
+            <p>Food details</p>
+        </div>
+        <span class="close-btn" onclick="closeDetailsPopup()">&times;</span>
+        <div class="details-content">
+            <img src="" alt="Food Image" id="details-image">
+            <h2 id="details-title">Food Title</h2>
+            <p id="details-ingredients">Ingredients: ...</p>
+            <p id="details-nutrition">Nutritional Values: ...</p>
+            <h3 id="details-price">$0.00</h3>
+            <button class="add-cart" onclick="addToCartFromDetails()">Add to Cart</button>
+        </div>
+    </div>
+</div>
 </div>
 </body>
 </html>

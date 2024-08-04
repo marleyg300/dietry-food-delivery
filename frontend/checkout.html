@@ -1,105 +1,211 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
-    <link rel="stylesheet" href="tailwindcss-colors.css">
-    <link rel="stylesheet" href="checkout.css">
-    <script src="checkout.js" defer></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="tailwindcss-colors.css" />
+    <link rel="stylesheet" href="css/checkout.css" />
+    <script src="js/checkout.js" defer></script>
     <title>Checkout</title>
-</head>
-<body>
+  </head>
+  <body>
     <!-- start: Payment -->
-        <section class="payment-section">
-        <div class="container">
-            <div class="payment-wrapper">
-                <div class="payment-left">
-                    <div class="payment-header">
-                        <div class="payment-header-icon"><i class="ri-flashlight-fill"></i></div>
-                        <div class="payment-header-title">Order Summary</div>
-                        <p class="payment-header-description">Review your order before proceeding to payment.</p>
-                    </div>
-                    <div class="payment-content">
-                        <div class="payment-body">
-                            <div class="payment-summary" id="order-summary">
-                                <!-- Order summary will be dynamically inserted here -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="payment-right">
-                    <form id="checkout-form" class="payment-form">
-                        <h1 class="payment-title">Payment Details</h1>
-                    <div class="payment-method">
-                            <input type="radio" name="payment-method" id="method-1" value="visa">
-                        <label for="method-1" class="payment-method-item">
-                            <img src="images/visa.png" alt="Visa">
-                        </label>
-                        <input type="radio" name="payment-method" id="method-2" value="Pay Cash">
-                        <label for="method-2" class="payment-method-item">
-                            <img src="images/images.jpg" alt="Cash">
-                        </label>
-                        <input type="radio" name="payment-method" id="method-3" value="paypal">
-                            <label for="method-3" class="payment-method-item">
-                            <img src="images/paypal.png" alt="PayPal">
-                        </label>
-                    </div>
-
-                    <!-- Visa Form -->
-                        <div class="payment-form-group" id="visa-form" style="display: none;">
-                            <input type="email" placeholder="Email Address " class="payment-form-control" id="visa-email" required>
-                            <label for="visa-email" class="payment-form-label payment-form-label-required"></label>
-                            <input type="text" placeholder=" Card Number " class="payment-form-control" id="visa-card-number" required>
-                            <label for="visa-card-number" class="payment-form-label payment-form-label-required"></label>
-                            <div class="payment-form-group-flex">
-                                <div class="payment-form-group">
-                                    <input type="date" placeholder=" Expiry Date" class="payment-form-control" id="visa-expiry-date" required>
-                                    <label for="visa-expiry-date" class="payment-form-label payment-form-label-required"></label>
-                                </div>
-                                <div class="payment-form-group">
-                                    <input type="text" placeholder="CVV" class="payment-form-control" id="visa-cvv" required>
-                                    <label for="visa-cvv" class="payment-form-label payment-form-label-required"></label>
-                                </div>
-                            </div>
-                    </div>
-
-                    <!-- Mpesa Form -->
-                        <div class="payment-form-group" id="mpesa-form" style="display: none;">
-                            <input type="text" placeholder="Name " class="payment-form-control" id="mpesa-name" required>
-                            <label for="mpesa-name" class="payment-form-label payment-form-label-required"></label>
-                            <input type="text" placeholder="Phone Number" class="payment-form-control" id="mpesa-phone" required>
-                            <label for="mpesa-phone" class="payment-form-label payment-form-label-required"></label>
-                    </div>
-
-                    <!-- PayPal Form -->
-                        <div class="payment-form-group" id="paypal-form" style="display: none;">
-                            <input type="email" placeholder="Email Address" class="payment-form-control" id="paypal-email" required>
-                            <label for="paypal-email" class="payment-form-label payment-form-label-required"></label>
-                            <input type="text" placeholder="Name" class="payment-form-control" id="paypal-name" required>
-                            <label for="paypal-name" class="payment-form-label payment-form-label-required"></label>
-                        </div>
-                    </form>
-                    <button type="submit" class="payment-form-submit-button"><i class="ri-wallet-line"></i> Pay</button>
-                    </div>
-                </div>
+    <section class="payment-section">
+      <div class="container">
+        <div class="payment-wrapper">
+          <div class="payment-left">
+            <div class="payment-header">
+              <div class="payment-header-icon">
+                <i class="ri-flashlight-fill"></i>
+              </div>
+              <div class="payment-header-title">Order Summary</div>
+              <p class="payment-header-description">
+                Review your order before proceeding to payment.
+              </p>
             </div>
-        </section>
+            <div class="payment-content">
+              <div class="payment-body">
+                <div class="payment-summary" id="order-summary">
+                  <!-- Order summary will be dynamically inserted here -->
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="payment-right">
+            <form id="checkout-form" class="payment-form">
+              <h1 class="payment-title">Payment Details</h1>
+              <div class="payment-method">
+                <input
+                  type="radio"
+                  name="payment-method"
+                  id="method-1"
+                  value="visa"
+                />
+                <label for="method-1" class="payment-method-item">
+                  <img src="images/visa.png" alt="Visa" />
+                </label>
+                <input
+                  type="radio"
+                  name="payment-method"
+                  id="method-2"
+                  value="Pay Cash"
+                />
+                <label for="method-2" class="payment-method-item">
+                  <img src="images/images.jpg" alt="Cash" />
+                </label>
+                <input
+                  type="radio"
+                  name="payment-method"
+                  id="method-3"
+                  value="paypal"
+                />
+                <label for="method-3" class="payment-method-item">
+                  <img src="images/paypal.png" alt="PayPal" />
+                </label>
+              </div>
+
+              <!-- Visa Form -->
+              <div
+                class="payment-form-group"
+                id="visa-form"
+                style="display: none"
+              >
+                <input
+                  type="email"
+                  placeholder="Email Address "
+                  class="payment-form-control"
+                  id="visa-email"
+                  required
+                />
+                <label
+                  for="visa-email"
+                  class="payment-form-label payment-form-label-required"
+                ></label>
+                <input
+                  type="text"
+                  placeholder=" Card Number "
+                  class="payment-form-control"
+                  id="visa-card-number"
+                  required
+                />
+                <label
+                  for="visa-card-number"
+                  class="payment-form-label payment-form-label-required"
+                ></label>
+                <div class="payment-form-group-flex">
+                  <div class="payment-form-group">
+                    <input
+                      type="date"
+                      placeholder=" Expiry Date"
+                      class="payment-form-control"
+                      id="visa-expiry-date"
+                      required
+                    />
+                    <label
+                      for="visa-expiry-date"
+                      class="payment-form-label payment-form-label-required"
+                    ></label>
+                  </div>
+                  <div class="payment-form-group">
+                    <input
+                      type="text"
+                      placeholder="CVV"
+                      class="payment-form-control"
+                      id="visa-cvv"
+                      required
+                    />
+                    <label
+                      for="visa-cvv"
+                      class="payment-form-label payment-form-label-required"
+                    ></label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Mpesa Form -->
+              <div
+                class="payment-form-group"
+                id="mpesa-form"
+                style="display: none"
+              >
+                <input
+                  type="text"
+                  placeholder="Name "
+                  class="payment-form-control"
+                  id="mpesa-name"
+                  required
+                />
+                <label
+                  for="mpesa-name"
+                  class="payment-form-label payment-form-label-required"
+                ></label>
+                <input
+                  type="text"
+                  placeholder="Phone Number"
+                  class="payment-form-control"
+                  id="mpesa-phone"
+                  required
+                />
+                <label
+                  for="mpesa-phone"
+                  class="payment-form-label payment-form-label-required"
+                ></label>
+              </div>
+
+              <!-- PayPal Form -->
+              <div
+                class="payment-form-group"
+                id="paypal-form"
+                style="display: none"
+              >
+                <input
+                  type="email"
+                  placeholder="Email Address"
+                  class="payment-form-control"
+                  id="paypal-email"
+                  required
+                />
+                <label
+                  for="paypal-email"
+                  class="payment-form-label payment-form-label-required"
+                ></label>
+                <input
+                  type="text"
+                  placeholder="Name"
+                  class="payment-form-control"
+                  id="paypal-name"
+                  required
+                />
+                <label
+                  for="paypal-name"
+                  class="payment-form-label payment-form-label-required"
+                ></label>
+              </div>
+            </form>
+            <button type="submit" class="payment-form-submit-button">
+              <i class="ri-wallet-line"></i> Pay
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- end: Payment -->
-
-</body>
-<span id="order-count" class="order-count">0</span>
-<button id="open-cart" class="cart-button">
+  </body>
+  <span id="order-count" class="order-count">0</span>
+  <button id="open-cart" class="cart-button">
     <i class="fa-sharp fa-solid fa-receipt"></i>
-</button>
+  </button>
 
-        <!-- Side Cart -->
-        <div id="side-cart" class="side-cart">
+  <!-- Side Cart -->
+  <div id="side-cart" class="side-cart">
     <button id="close-cart" class="close-cart-button">&times;</button>
     <h2>Order Summary</h2>
-            <div id="order-list">
-        <!-- Orders will be dynamically inserted here -->
+    <div id="order-list">
+      <!-- Orders will be dynamically inserted here -->
     </div>
-</div>
-
+  </div>
 </html>

@@ -1,798 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <script src="menu.js" defer></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Menu</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/home.js" defer></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Food Delivery System</title>
+  </head>
+  <body>
+    <!--Navbar-->
     <div class="container">
-        <h1>Food Life</h1>
-        <div class="navbar">
-            <ul>
-                <li><i class="fa-solid fa-magnifying-glass" class="searchbtn"></i></li>
-                <li><i class="fa-solid fa-user"></i></li>
-                <button class="btn-cart">
-                    <i class="fa-solid fa-cart-shopping" id="cart-icon"></i>
-                    </button>
-                    <div class="cart-count">0</div>
-            </ul>
-        </div> 
+      <h1>Food Life</h1>
+      <div class="navbar">
+        <ul>
+          <li><a href="home.html">HOME</a></li>
+          <li><a href="about.html">ABOUT</a></li>
+          <li><a href="viewDietries.html">MENU</a></li>
+          <li><a href="contact.html">CONTACT US</a></li>
+        </ul>
+      </div>
     </div>
-    <div class="menu" id="Menu">
-        <div class="topbar">
-            <h1><span>Our Menu</span></h1>
+
+    <!-- Content -->
+    <div class="content">
+      <h3>Welcome to Food LIFE</h3>
+      <h1>Healthy and Rich Food</h1>
+      <p>
+        Food Life is a Food order and Delivery Website that meets all your
+        dietary needs and restrictions.
+      </p>
+      <button class="login-btn">LOG IN</button>
+    </div>
+    <!--Login Popup Form-->
+    <div class="form-popup login-popup">
+      <label for="" class="close-btn fas fa-times"></label>
+      <div class="form-box">
+        <div class="form-content">
+          <h2>LOGIN</h2>
+          <form>
+            <div class="input-field">
+              <input type="text" name="email" placeholder="Email" required />
+            </div>
+            <div class="input-field">
+              <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                required
+              />
+            </div>
+            <button type="submit">LOGIN</button>
+          </form>
+          <div class="bottom-link">
+            Don't have an account?
+            <a href="#" class="show-signup">Sign Up</a>
+          </div>
         </div>
-        <div class="food-headers">
-            <h2>Lactose Intolerance</h2>
+      </div>
+    </div>
+    <!--Sign-Up Popup Form-->
+    <div class="form-popup signup-popup">
+      <label for="" class="close-btn fas fa-times"></label>
+      <div class="form-box">
+        <div class="form-content">
+          <h2>SIGN UP</h2>
+          <form id="signup-form">
+            <!-- Step 1: User Information -->
+            <div class="form-step" id="step1">
+              <div class="input-field">
+                <input
+                  type="text"
+                  name="username"
+                  placeholder="Username"
+                  required
+                />
+              </div>
+              <div class="input-field">
+                <input type="text" name="email" placeholder="Email" required />
+              </div>
+              <div class="input-field">
+                <input
+                  type="text"
+                  name="phone"
+                  placeholder="Phone Number"
+                  required
+                />
+              </div>
+
+              <div class="input-field">
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                  required
+                />
+              </div>
+              <select name="role" class="input-field" required>
+                <option value="user">User</option>
+                <option value="agent">Agent</option>
+              </select>
+              <button type="button" onclick="showStep(2)">Next</button>
+            </div>
+            <!-- Step 2: Dietary Restrictions -->
+            <div class="form-step" id="step2" style="display: none">
+              <h3>Select Dietary Restrictions:</h3>
+              <div class="card-container" id="dietary-cards-container">
+                <!-- Cards will be dynamically inserted here -->
+              </div>
+              <button type="button" onclick="showStep(1)">Back</button>
+              <button type="submit" class="signup-submit">Sign Up</button>
+            </div>
+          </form>
+          <div class="bottom-link">
+            Already have an account?
+            <a href="#" class="show-login">Log In</a>
+          </div>
         </div>
-        <div class="menu_box">
-            <!-- Lactose Intolerance Section -->
-            <div class="menu_card">
-                <div class="menu_image">
-                    <img src="images/grilled chicken.jpg" alt="Grilled Chicken">
-                </div>
-                <div class="small_card">
-                    <i class="fa-solid fa-cart-shopping"></i>
-                </div>
-                <div class="menu_info">
-                    <h2>Grilled Chicken</h2>
-                    <p>Grilled chicken breast served with a side of vegetables.</p>
-                    <h3>Ksh 300</h3>
-                    <div class="menu_icon">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star-half-stroke"></i>
-                    </div>
-                    <a href="#" class="menu_btn" id="details-popupbtn">Details</a>
-                </div>
-            </div>
-            <div class="menu_card">
-                <div class="menu_image">
-                    <img src="images/fruit salad.jpg" alt="Fruit Salad">
-                </div>
-                <div class="small_card">
-                    <i class="fa-solid fa-cart-shopping"></i>
-                </div>
-                <div class="menu_info">
-                    <h2>Fruit Salad</h2>
-                    <p>Fresh fruit salad with a mix of seasonal fruits.</p>
-                    <h3>Ksh 200</h3>
-                    <div class="menu_icon">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star-half-stroke"></i>
-                    </div>
-                    <a href="#" class="menu_btn">Order Now</a>
-                </div>
-            </div>
-
-            <div class="menu_card">
-                <div class="menu_image">
-                    <img src="images/quinoa salad.jpg" alt="Quinoa Salad">
-                </div>
-                <div class="small_card">
-                    <i class="fa-solid fa-cart-shopping"></i>
-                </div>
-                <div class="menu_info">
-                    <h2>Quinoa Salad</h2>
-                    <p>Healthy quinoa salad with mixed greens and vegetables.</p>
-                    <h3>Ksh 250</h3>
-                    <div class="menu_icon">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star-half-stroke"></i>
-                    </div>
-                    <a href="#" class="menu_btn">Order Now</a>
-                </div>
-            </div>
-        
-            <div class="menu_card">
-                <div class="menu_image">
-                    <img src="images/avocado toast.jpg" alt="Avocado Toast">
-                </div>
-                <div class="small_card">
-                    <i class="fa-solid fa-cart-shopping"></i>
-                </div>
-                <div class="menu_info">
-                    <h2>Avocado Toast</h2>
-                    <p>Whole wheat toast topped with avocado slices and a sprinkle of herbs.</p>
-                    <h3>Ksh 180</h3>
-                    <div class="menu_icon">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star-half-stroke"></i>
-                    </div>
-                    <a href="#" class="menu_btn">Order Now</a>
-                </div>
-            </div>
-
-            <div class="menu_card">
-                <div class="menu_image">
-                    <img src="images/oatmeal.jpg" alt="Oatmeal">
-                </div>
-                <div class="small_card">
-                    <i class="fa-solid fa-cart-shopping"></i>
-                </div>
-                <div class="menu_info">
-                    <h2>Oatmeal</h2>
-                    <p>Warm oatmeal topped with fresh berries and honey.</p>
-                    <h3>Ksh 150</h3>
-                    <div class="menu_icon">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star-half-stroke"></i>
-                    </div>
-                    <a href="#" class="menu_btn">Order Now</a>
-                </div>
-            </div>
-
-            <div class="menu_card">
-                <div class="menu_image">
-                    <img src="images/chickpea salad.jpg" alt="Chickpea Salad">
-                </div>
-                <div class="small_card">
-                    <i class="fa-solid fa-cart-shopping"></i>
-                </div>
-                <div class="menu_info">
-                    <h2>Chickpea Salad</h2>
-                    <p>Healthy chickpea salad with a tangy dressing and fresh vegetables.</p>
-                    <h3>Ksh 250</h3>
-                    <div class="menu_icon">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star-half-stroke"></i>
-                    </div>
-                    <a href="#" class="menu_btn">Order Now</a>
-                </div>
-            </div>
-        </div>
-
-            <!-- Vegan Section -->
-            <div class="food-headers">
-                <h2>Vegan</h2>
-            </div>
-        <div class="menu_box">
-            <div class="menu_card">
-                <div class="menu_image">
-                    <img src="images/vegan burger.jpg" alt="Vegan Burger">
-                </div>
-                <div class="small_card">
-                    <i class="fa-solid fa-cart-shopping"></i>
-                </div>
-                <div class="menu_info">
-                    <h2>Vegan Burger</h2>
-                    <p>Delicious vegan burger made with plant-based patty and fresh veggies.</p>
-                    <h3>Ksh 300</h3>
-                    <div class="menu_icon">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star-half-stroke"></i>
-                    </div>
-                    <a href="#" class="menu_btn">Order Now</a>
-                </div>
-            </div>
-
-            <div class="menu_card">
-                <div class="menu_image">
-                    <img src="images/tofu stir fry.jpg" alt="Tofu Stir Fry">
-                </div>
-                <div class="small_card">
-                    <i class="fa-solid fa-cart-shopping"></i>
-                </div>
-                <div class="menu_info">
-                    <h2>Tofu Stir Fry</h2>
-                    <p>Stir-fried tofu with mixed vegetables in a savory sauce.</p>
-                    <h3>Ksh 250</h3>
-                    <div class="menu_icon">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star-half-stroke"></i>
-                    </div>
-                    <a href="#" class="menu_btn">Order Now</a>
-                </div>
-            </div>
-
-            <div class="menu_card">
-                <div class="menu_image">
-                    <img src="images/tempeh salad.jpg" alt="Tempeh Salad">
-                </div>
-                <div class="small_card">
-                    <i class="fa-solid fa-cart-shopping"></i>
-                </div>
-                <div class="menu_info">
-                    <h2>Tempeh Salad</h2>
-                    <p>Salad with tempeh, mixed greens, and a light vinaigrette dressing.</p>
-                    <h3>Ksh 280</h3>
-                    <div class="menu_icon">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star-half-stroke"></i>
-                    </div>
-                    <a href="#" class="menu_btn">Order Now</a>
-                </div>
-            </div>
-
-            <div class="menu_card">
-                <div class="menu_image">
-                    <img src="images/vegetable curry.jpg" alt="Vegetable Curry">
-                </div>
-                <div class="small_card">
-                    <i class="fa-solid fa-cart-shopping"></i>
-                </div>
-                <div class="menu_info">
-                    <h2>Vegetable Curry</h2>
-                    <p>Spicy vegetable curry served with brown rice.</p>
-                    <h3>Ksh 270</h3>
-                    <div class="menu_icon">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star-half-stroke"></i>
-                    </div>
-                    <a href="#" class="menu_btn">Order Now</a>
-                </div>
-            </div>
-
-            <div class="menu_card">
-                <div class="menu_image">
-                    <img src="images/chickpea stew.jpg" alt="Chickpea Stew">
-                </div>
-                <div class="small_card">
-                    <i class="fa-solid fa-cart-shopping"></i>
-                </div>
-                <div class="menu_info">
-                    <h2>Chickpea Stew</h2>
-                    <p>Hearty chickpea stew with vegetables and herbs.</p>
-                    <h3>Ksh 250</h3>
-                    <div class="menu_icon">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star-half-stroke"></i>
-                    </div>
-                    <a href="#" class="menu_btn">Order Now</a>
-                </div>
-            </div>
-        </div>
-            <!-- Diabetic Section -->
-            <div class="food-headers">
-                <h2>Diabetic</h2>
-            </div>
-        <div class="menu_box">
-            <div class="menu_card">
-                <div class="menu_image">
-                    <img src="images/grilled fish.jpg" alt="Grilled Fish">
-                </div>
-                <div class="small_card">
-                    <i class="fa-solid fa-cart-shopping"></i>
-                </div>
-                <div class="menu_info">
-                    <h2>Grilled Fish</h2>
-                    <p>Grilled fish fillet served with a side of steamed vegetables.</p>
-                    <h3>Ksh 300</h3>
-                    <div class="menu_icon">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star-half-stroke"></i>
-                    </div>
-                    <a href="#" class="menu_btn">Order Now</a>
-                </div>
-            </div>
-
-            <div class="menu_card">
-                <div class="menu_image">
-                    <img src="images/mixed vegetable stir fry.jpg" alt="Mixed Vegetable Stir Fry">
-                </div>
-                <div class="small_card">
-                    <i class="fa-solid fa-cart-shopping"></i>
-                </div>
-                <div class="menu_info">
-                    <h2>Mixed Vegetable Stir Fry</h2>
-                    <p>A mix of stir-fried vegetables with light soy sauce and chicken.</p>
-                    <h3>Ksh 250</h3>
-                    <div class="menu_icon">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star-half-stroke"></i>
-                    </div>
-                    <a href="#" class="menu_btn">Order Now</a>
-                </div>
-            </div>
-
-            <div class="menu_card">
-                <div class="menu_image">
-                    <img src="images/zucchini noodles.jpg" alt="Zucchini Noodles">
-                </div>
-                <div class="small_card">
-                    <i class="fa-solid fa-cart-shopping"></i>
-                </div>
-                <div class="menu_info">
-                    <h2>Zucchini Noodles</h2>
-                    <p>Healthy zucchini noodles with marinara sauce.</p>
-                    <h3>Ksh 220</h3>
-                    <div class="menu_icon">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star-half-stroke"></i>
-                    </div>
-                    <a href="#" class="menu_btn">Order Now</a>
-                </div>
-            </div>
-
-            <div class="menu_card">
-                <div class="menu_image">
-                    <img src="images/baked salmon.jpg" alt="Baked Salmon">
-                </div>
-                <div class="small_card">
-                    <i class="fa-solid fa-cart-shopping"></i>
-                </div>
-                <div class="menu_info">
-                    <h2>Baked Salmon</h2>
-                    <p>Baked salmon fillet with herbs and a side of steamed vegetables.</p>
-                    <h3>Ksh 320</h3>
-                    <div class="menu_icon">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star-half-stroke"></i>
-                    </div>
-                    <a href="#" class="menu_btn">Order Now</a>
-                </div>
-            </div>
-
-            <div class="menu_card">
-                <div class="menu_image">
-                    <img src="images/stuffed bell peppers.jpg" alt="Stuffed Bell Peppers">
-                </div>
-                <div class="small_card">
-                    <i class="fa-solid fa-cart-shopping"></i>
-                </div>
-                <div class="menu_info">
-                    <h2>Stuffed Bell Peppers</h2>
-                    <p>Quinoa and vegetable-stuffed bell peppers topped with cheese.</p>
-                    <h3>Ksh 280</h3>
-                    <div class="menu_icon">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star-half-stroke"></i>
-                    </div>
-                    <a href="#" class="menu_btn">Order Now</a>
-                </div>
-            </div>
-            
-        </div>
-            <!-- Hypertension Section -->
-             <div class="food-headers">
-            <h2>Hypertension</h2>
-            </div>
-            <div class="menu_box">
-            <div class="menu_card">
-                <div class="menu_image">
-                    <img src="images/steamed broccoli and cauliflower.jpg" alt="Steamed Broccoli">
-                </div>
-                <div class="small_card">
-                    <i class="fa-solid fa-heart"></i>
-                </div>
-                <div class="menu_info">
-                    <h2>Steamed Broccoli</h2>
-                    <p>Fresh steamed broccoli and cauliflower with a hint of lemon and fresh crunchy carrots.</p>
-                    <h3>Ksh 200</h3>
-                    <div class="menu_icon">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star-half-stroke"></i>
-                    </div>
-                    <a href="#" class="menu_btn">Order Now</a>
-                </div>
-            </div>
-
-            <div class="menu_card">
-                <div class="menu_image">
-                    <img src="images/salmon salad.jpg" alt="Salmon Salad">
-                </div>
-                <div class="small_card">
-                    <i class="fa-solid fa-heart"></i>
-                </div>
-                <div class="menu_info">
-                    <h2>Salmon Salad</h2>
-                    <p>Salmon salad with mixed greens and light dressing.</p>
-                    <h3>Ksh 300</h3>
-                    <div class="menu_icon">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star-half-stroke"></i>
-                    </div>
-                    <a href="#" class="menu_btn">Order Now</a>
-                </div>
-            </div>
-                <div class="menu_card">
-                    <div class="menu_image">
-                        <img src="images/baked potato.jpg" alt="Baked Potato">
-                    </div>
-                    <div class="small_card">
-                        <i class="fa-solid fa-heart"></i>
-                    </div>
-                    <div class="menu_info">
-                        <h2>Baked Potato</h2>
-                        <p>Baked potato topped with cottage cheese and chives.</p>
-                        <h3>Ksh 220</h3>
-                        <div class="menu_icon">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star-half-stroke"></i>
-                        </div>
-                        <a href="#" class="menu_btn">Order Now</a>
-                    </div>
-                </div>
-    
-            <div class="menu_card">
-                    <div class="menu_image">
-                        <img src="images/spinach salad.jpg" alt="Spinach Salad">
-                    </div>
-                    <div class="small_card">
-                        <i class="fa-solid fa-heart"></i>
-                    </div>
-                    <div class="menu_info">
-                        <h2>Spinach Salad</h2>
-                        <p>Fresh spinach salad with tomatoes, cucumbers, and a light vinaigrette.</p>
-                        <h3>Ksh 230</h3>
-                        <div class="menu_icon">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star-half-stroke"></i>
-                        </div>
-                        <a href="#" class="menu_btn">Order Now</a>
-                    </div>
-            </div>
-    
-            <div class="menu_card">
-                    <div class="menu_image">
-                        <img src="images/turkey breast.jpg" alt="Turkey Breast">
-                    </div>
-                    <div class="small_card">
-                        <i class="fa-solid fa-heart"></i>
-                    </div>
-                    <div class="menu_info">
-                        <h2>Turkey Breast</h2>
-                        <p>Roasted turkey breast slices served with a side of mixed greens.</p>
-                        <h3>Ksh 350</h3>
-                        <div class="menu_icon">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star-half-stroke"></i>
-                        </div>
-                        <a href="#" class="menu_btn">Order Now</a>
-                    </div>
-                </div>
-            </div>
-            <div class="food-headers">
-                    <h2>High-Protein Diet</h2>
-                </div>
-                <div class="menu_box">
-                    <div class="menu_card">
-                        <div class="menu_image">
-                            <img src="images/grilled steak.jpg" alt="Grilled Steak">
-                        </div>
-                        <div class="small_card">
-                            <i class="fa-solid fa-cart-shopping"></i>
-                        </div>
-                        <div class="menu_info">
-                            <h2>Grilled Steak</h2>
-                            <p>Juicy grilled steak served with a side of roasted vegetables.</p>
-                            <h3>Ksh 400</h3>
-                            <div class="menu_icon">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star-half-stroke"></i>
-                            </div>
-                            <a href="#" button class="menu_btn">Order Now</a>
-                        </div>
-                    </div>
-                    <div class="menu_card">
-                        <div class="menu_image">
-                            <img src="images/chicken breast.jpg" alt="Chicken Breast">
-                        </div>
-                        <div class="small_card">
-                            <i class="fa-solid fa-cart-shopping"></i>
-                        </div>
-                        <div class="menu_info">
-                            <h2>Chicken Breast</h2>
-                            <p>Grilled chicken breast served with a side of brown rice and steamed vegetables.</p>
-                            <h3>Ksh 350</h3>
-                            <div class="menu_icon">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star-half-stroke"></i>
-                            </div>
-                            <a href="#" class="menu_btn">Order Now</a>
-                        </div>
-                    </div>
-        
-                    <div class="menu_card">
-                        <div class="menu_image">
-                            <img src="images/egg white omelette.jpg" alt="Egg White Omelette">
-                        </div>
-                        <div class="small_card">
-                            <i class="fa-solid fa-cart-shopping"></i>
-                        </div>
-                        <div class="menu_info">
-                            <h2>Egg White Omelette</h2>
-                            <p>Fluffy egg white omelette with spinach and mushrooms.</p>
-                            <h3>Ksh 200</h3>
-                            <div class="menu_icon">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star-half-stroke"></i>
-                            </div>
-                            <a href="#" class="menu_btn">Order Now</a>
-                        </div>
-                    </div>
-        
-                    <div class="menu_card">
-                        <div class="menu_image">
-                            <img src="images/protein smoothie.jpg" alt="Protein Smoothie">
-                        </div>
-                        <div class="small_card">
-                            <i class="fa-solid fa-cart-shopping"></i>
-                        </div>
-                        <div class="menu_info">
-                            <h2>Protein Smoothie</h2>
-                            <p>High-protein smoothie made with whey protein, banana, and almond milk.</p>
-                            <h3>Ksh 180</h3>
-                            <div class="menu_icon">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star-half-stroke"></i>
-                            </div>
-                            <a href="#" class="menu_btn">Order Now</a>
-                        </div>
-                    </div>
-        
-                    <div class="menu_card">
-                        <div class="menu_image">
-                            <img src="images/lentil soup.jpg" alt="Lentil Soup">
-                        </div>
-                        <div class="small_card">
-                            <i class="fa-solid fa-cart-shopping"></i>
-                        </div>
-                        <div class="menu_info">
-                            <h2>Lentil Soup</h2>
-                            <p>Hearty lentil soup with vegetables and a touch of cumin.</p>
-                            <h3>Ksh 200</h3>
-                            <div class="menu_icon">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star-half-stroke"></i>
-                            </div>
-                            <a href="#" class="menu_btn">Order Now</a>
-                        </div>
-                </div>
-                </div>
-                    <!-- Add more High-Protein Diet options here -->
-                    <!-- Anti-inflammatory Diet Section -->
-                    <div class="food-headers">
-                        <h2>Anti-inflammatory Diet</h2>
-                    </div>
-                    <div class="menu_box">
-                        <div class="menu_card">
-                            <div class="menu_image">
-                                <img src="images/salmon avocado.jpg" alt="Salmon Avocado Salad">
-                            </div>
-                            <div class="small_card">
-                                <i class="fa-solid fa-cart-shopping"></i>
-                            </div>
-                            <div class="menu_info">
-                                <h2>Salmon Avocado Salad</h2>
-                                <p>Fresh salmon and avocado salad with a citrus vinaigrette.</p>
-                                <h3>Ksh 350</h3>
-                                <div class="menu_icon">
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star-half-stroke"></i>
-                                </div>
-                                <a href="#" class="menu_btn">Order Now</a>
-                            </div>
-                        </div>
-                        <div class="menu_box">
-                            <div class="menu_card">
-                                <div class="menu_image">
-                                    <img src="images/tumeric lentil soup.jpg" alt="Turmeric Lentil Soup">
-                                </div>
-                                <div class="small_card">
-                                    <i class="fa-solid fa-cart-shopping"></i>
-                                </div>
-                                <div class="menu_info">
-                                    <h2>Turmeric Lentil Soup</h2>
-                                    <p>Warm lentil soup infused with turmeric and ginger.</p>
-                                    <h3>Ksh 300</h3>
-                                    <div class="menu_icon">
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star-half-stroke"></i>
-                                    </div>
-                                    <a href="#" class="menu_btn">Order Now</a>
-                                </div>
-                            </div>
-                        </div>
-                        
-                            <div class="menu_card">
-                                <div class="menu_image">
-                                    <img src="images/salmon quinoa sala.jpg" alt="Salmon Quinoa Salad">
-                                </div>
-                                <div class="small_card">
-                                    <i class="fa-solid fa-cart-shopping"></i>
-                                </div>
-                                <div class="menu_info">
-                                    <h2>Salmon Quinoa Salad</h2>
-                                    <p>Fresh salmon served over quinoa and mixed greens with a lemon vinaigrette.</p>
-                                    <h3>Ksh 450</h3>
-                                    <div class="menu_icon">
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                    </div>
-                                    <a href="#" class="menu_btn">Order Now</a>
-                                </div>
-                            </div>
-                        
-                            <div class="menu_card">
-                                <div class="menu_image">
-                                    <img src="images/blueberry chia pudding.jpg" alt="Blueberry Chia Pudding">
-                                </div>
-                                <div class="small_card">
-                                    <i class="fa-solid fa-cart-shopping"></i>
-                                </div>
-                                <div class="menu_info">
-                                    <h2>Blueberry Chia Pudding</h2>
-                                    <p>Creamy chia pudding topped with fresh blueberries and a hint of vanilla.</p>
-                                    <h3>Ksh 250</h3>
-                                    <div class="menu_icon">
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star-half-stroke"></i>
-                                    </div>
-                                    <a href="#" class="menu_btn">Order Now</a>
-                                </div>
-                            </div>
-                        
-                            <div class="menu_card">
-                                <div class="menu_image">
-                                    <img src="images/ginger carrot smoothie.jpg" alt="Ginger Carrot Smoothie">
-                                </div>
-                                <div class="small_card">
-                                    <i class="fa-solid fa-cart-shopping"></i>
-                                </div>
-                                <div class="menu_info">
-                                    <h2>Ginger Carrot Smoothie</h2>
-                                    <p>Refreshing smoothie made with carrots, ginger, and a touch of honey.</p>
-                                    <h3>Ksh 200</h3>
-                                    <div class="menu_icon">
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star-half-stroke"></i>
-                                    </div>
-                                    <a href="#" class="menu_btn">Order Now</a>
-                                </div>
-                            </div>
-                        
-                            <div class="menu_card">
-                                <div class="menu_image">
-                                    <img src="images/spinach mushroom quiche.jpg" alt="Spinach Mushroom Quiche">
-                                </div>
-                                <div class="small_card">
-                                    <i class="fa-solid fa-cart-shopping"></i>
-                                </div>
-                                <div class="menu_info">
-                                    <h2>Spinach Mushroom Quiche</h2>
-                                    <p>Savory quiche filled with spinach, mushrooms, and a blend of cheeses.</p>
-                                    <h3>Ksh 350</h3>
-                                    <div class="menu_icon">
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star-half-stroke"></i>
-                                    </div>
-                                    <a href="#" class="menu_btn">Order Now</a>
-                                </div>
-                            </div>
-                        
-                            <div class="menu_card">
-                                <div class="menu_image">
-                                    <img src="images/berry avocado salad.jpg" alt="Berry Avocado Salad">
-                                </div>
-                                <div class="small_card">
-                                    <i class="fa-solid fa-cart-shopping"></i>
-                                </div>
-                                <div class="menu_info">
-                                    <h2>Berry Avocado Salad</h2>
-                                    <p>A refreshing mix of berries, avocado, and mixed greens with a light balsamic dressing.</p>
-                                    <h3>Ksh 400</h3>
-                                    <div class="menu_icon">
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star-half-stroke"></i>
-                                    </div>
-                                    <a href="#" class="menu_btn">Order Now</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Add more Anti-inflammatory Diet options here -->
-
-                    </div>
-            </div>
-
-        
-
-
-</div>
-</div>
-</body>
-</form>
-</body>
+      </div>
+    </div>
+    <script>
+      function showStep(step) {
+        document.querySelectorAll(".form-step").forEach(function (stepElement) {
+          stepElement.style.display = "none";
+        });
+        document.getElementById("step" + step).style.display = "block";
+      }
+    </script>
+  </body>
 </html>
