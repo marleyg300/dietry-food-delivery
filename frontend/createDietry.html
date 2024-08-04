@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/createDietry.js" defer></script>
+    <title>Add Dietary Item</title>
+  </head>
+  <body>
+    <h1>Add Dietary Item</h1>
+    <form id="food-form" enctype="multipart/form-data">
+      <div class="input-field">
+        <input type="text" name="name" placeholder="Food Name" required />
+      </div>
+      <div class="input-field">
+        <input type="file" name="image" accept="image/*" required />
+      </div>
+      <div class="input-field">
+        <textarea
+          name="description"
+          placeholder="Food Description"
+          required
+        ></textarea>
+      </div>
+      <div class="input-field">
+        <input
+          type="number"
+          name="price"
+          placeholder="Price"
+          step="0.01"
+          required
+        />
+      </div>
+      <div class="input-field">
+        <input
+          type="text"
+          name="nutritional_value"
+          placeholder="Nutritional Value"
+          required
+        />
+      </div>
+      <div class="input-field">
+        <textarea
+          name="ingredients"
+          placeholder="Ingredients (comma separated)"
+          required
+        ></textarea>
+      </div>
+      <div >
+        <label for="dietary_restrictions">Dietary Restrictions:</label>
+        <select
+          name="dietary_restrictions"
+          id="dietary_restrictions"
+          required
+        >
+          <option value="Hypertension">Hypertension</option>
+          <option value="Diabetes">Diabetes</option>
+          <option value="Lactose Intolerance">Lactose Intolerance</option>
+          <option value="Vegan">Vegan</option>
+          <option value="High Protein Diet">High Protein Diet</option>
+          <option value="Anti Inflammatory Diet">Anti Inflammatory Diet</option>
+          <option value="Celiac Disease">Celiac Disease</option>
+          <option value="Renal Diet">Renal Diet</option>
+          <option value="Ulcers Diet">Ulcers Diet</option>
+        </select>
+      </div>
+      <div>
+        <label for="type">Food Type:</label>
+        <select name="type" id="type" required>
+          <option value="breakfast">Breakfast</option>
+          <option value="lunch">Lunch</option>
+          <option value="supper">Supper</option>
+          <option value="snack">Snack</option>
+        </select>
+      </div>
+      <button type="submit">Add Dietary Item</button>
+    </form>
+
+    <h2>Existing Dietary Items</h2>
+    <div class="dietries-list"></div>
+  </body>
+</html>
