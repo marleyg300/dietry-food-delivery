@@ -78,12 +78,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    // Handle signup submit button
     signupSubmitBtn.addEventListener("click", async (e) => {
         e.preventDefault();
         const form = document.getElementById('signup-form');
         const formData = new FormData(form);
-
+    
         try {
             const response = await fetch('/api/users/signup', {
                 method: 'POST',
@@ -99,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     dietary_restrictions: formData.getAll('dietary_restrictions[]')
                 })
             });
-
+    
             const result = await response.json();
             if (response.ok) {
                 document.querySelector(".signup-popup").style.display = "none";
@@ -111,6 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Error:', err);
         }
     });
+    
 
     // Handle login submit button
     document.querySelector('.login-popup form').addEventListener('submit', async (e) => {

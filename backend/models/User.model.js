@@ -7,7 +7,7 @@ const userSchema = new mongoose.Schema({
     password: { type: String, required: true },
     role: { type: String, enum: ['user', 'admin'], default: 'user' },
     phone: { type: String, required: true },
-    dietary_restrictions: { type: String, required: true, enum: ['Hypertension', 'Diabetes', 'Lactose Intolerance', 'Vegan', 'High Protein Diet', 'Anti Inflammatory Diet', 'Celiac Disease', 'Renal Diet', 'Ulcers Diet' ] },
+    dietary_restrictions: { type: [String], required: true, enum: ['Hypertension', 'Diabetes', 'Lactose Intolerance', 'Vegan', 'High Protein Diet', 'Anti Inflammatory Diet', 'Celiac Disease', 'Renal Diet', 'Ulcers Diet' ] },
 });
 
 // Hash password before saving

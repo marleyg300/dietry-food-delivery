@@ -16,7 +16,7 @@ router.post('/signup', async (req, res) => {
             password,
             role,
             phone,
-            dietary_restrictions,
+            dietary_restrictions: Array.isArray(dietary_restrictions) ? dietary_restrictions : [dietary_restrictions],
         });
         await user.save();
         res.status(201).json({ message: 'User registered successfully' });
